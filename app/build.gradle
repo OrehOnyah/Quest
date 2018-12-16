@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.hyojung.quest"
-        minSdkVersion 14
+        applicationId "net.onyah.oreh.mp01_08_201602071"
+        minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
