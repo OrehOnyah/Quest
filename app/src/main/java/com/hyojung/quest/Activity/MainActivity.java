@@ -31,6 +31,7 @@ import com.hyojung.quest.Queries.QuestQuery;
 import com.hyojung.quest.JSON.JSONSendTask;
 import com.hyojung.quest.QuestEntryView;
 import com.example.hyojung.quest.R;
+import com.hyojung.quest.chat.ServerConfig;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
@@ -83,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         GlobalApplication.setCurrentActivity(this);
+        Log.d("MainActivity", "진입");
         this.callPermission();
         if (this.isPermission) {
             gpsInfomation = new GPSInfomation(MainActivity.this);
@@ -363,8 +364,8 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             JSONObject jsonObject = null;
             try {
-                Log.d("RefreshTableTask", "entered");
-                HttpURLConnection conn = this.setConnection("http://168.188.127.175:3000/tables");
+                Log.d("RefreshTableTask", "진입함. 서버주소 "+ServerConfig.ADDRESS+ServerConfig.PORT);
+                HttpURLConnection conn = this.setConnection(ServerConfig.ADDRESS+ServerConfig.PORT+"/tables");
                 jsonObject = new JSONObject();
                 jsonObject.put("uid", userID);
                 jsonObject.put("ordered", (this.location != null && questState == QuestQuery.UPLOADED));

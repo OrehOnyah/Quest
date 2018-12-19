@@ -9,6 +9,7 @@ import com.hyojung.quest.Queries.LoginQuery;
 import com.hyojung.quest.Queries.PointQuery;
 import com.hyojung.quest.Queries.Query;
 import com.hyojung.quest.Queries.QuestQuery;
+import com.hyojung.quest.chat.ServerConfig;
 
 
 import org.json.JSONException;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class JSONSendTask extends AsyncTask<Void, Void, Void> {
 
     Query query;
-    String urlString = "http://bcnet.iptime.org:18899";
+    String urlString = ServerConfig.ADDRESS+ServerConfig.PORT;
     Handler handler = null;
     String resultJsonString;
 
@@ -130,7 +131,6 @@ public class JSONSendTask extends AsyncTask<Void, Void, Void> {
                 if (clientQuestQuery.getState() != QuestQuery.UPLOADED) {
                     jsonObject.put("tid", clientQuestQuery.getQuestIndex());
                     jsonObject.put("questee", clientQuestQuery.getQuestee());
-                    jsonObject.put("questee_state", clientQuestQuery.getQuesteeState());
                 }
                 jsonObject.put("title", questInfo.get(0));
                 jsonObject.put("place", questInfo.get(1));
@@ -140,7 +140,6 @@ public class JSONSendTask extends AsyncTask<Void, Void, Void> {
                 jsonObject.put("comment", questInfo.get(3));
                 jsonObject.put("quester", clientQuestQuery.getQuester());
                 jsonObject.put("state", clientQuestQuery.getState());
-                jsonObject.put("quester_state", clientQuestQuery.getQuesterState());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

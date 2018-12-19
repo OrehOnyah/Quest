@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LoginQuery clientLoginQuery = new LoginQuery((long)0, "관리자", "관리자");
-                Intent intent = new Intent(instance, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("kakaoID", (long)0);
                 intent.putExtra("kakaoNickName", "관리자");
                 intent.putExtra("kakaoProfileImage", "관리자");
@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onSuccess(final UserProfile userProfile) {
                     LoginQuery clientLoginQuery = new LoginQuery(userProfile.getId(), userProfile.getNickname(), userProfile.getProfileImagePath());
                     JSONSendTask jsonTask = new JSONSendTask(clientLoginQuery);
-                    Intent intent = new Intent(instance, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("kakaoID", userProfile.getId());
                     intent.putExtra("kakaoNickName", userProfile.getNickname());
                     intent.putExtra("kakaoProfileImage", userProfile.getProfileImagePath());
