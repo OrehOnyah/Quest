@@ -130,7 +130,9 @@ public class JSONSendTask extends AsyncTask<Void, Void, Void> {
                 ArrayList<String> questInfo = clientQuestQuery.getQuestInfo();
                 if (clientQuestQuery.getState() != QuestQuery.UPLOADED) {
                     jsonObject.put("tid", clientQuestQuery.getQuestIndex());
-                    jsonObject.put("questee", clientQuestQuery.getQuestee());
+                    if (clientQuestQuery.getQuestee() != null) {
+                        jsonObject.put("questee", clientQuestQuery.getQuestee());
+                    }
                 }
                 jsonObject.put("title", questInfo.get(0));
                 jsonObject.put("place", questInfo.get(1));
